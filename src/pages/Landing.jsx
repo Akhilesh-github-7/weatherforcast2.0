@@ -15,7 +15,8 @@ const Landing = ({setWeatherData}) => {
     
     const getWeather=async (place)=>{
         try {
-            const url=`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=metric`
+            if(place){
+                const url=`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=metric`
             const res = await fetch(url)
             const data=await res.json()
             console.log(data);
@@ -28,6 +29,9 @@ const Landing = ({setWeatherData}) => {
                 description: data.weather[0].description
 
             })
+            }else{
+                alert('please fill the form')
+            }
         } catch (error) {
             console.log(error);
             
